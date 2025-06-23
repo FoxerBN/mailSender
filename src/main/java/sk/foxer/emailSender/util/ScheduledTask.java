@@ -13,7 +13,7 @@ public class ScheduledTask {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTask.class);
     private final EmailService emailService;
 
-    @Scheduled(cron = "0 */2 * * * *")
+    @Scheduled(cron = "0 0 5,12,18 * * *")
     public void sendScheduledEmail() {
         log.info("Sending scheduled email");
         try {
