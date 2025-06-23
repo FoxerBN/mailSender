@@ -2,91 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newsletter</title>
+    <title>Daily Zen Quote</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+
         body {
-          margin: 0;
-          padding: 0;
-          background-color: #f4f4f7;
-          font-family: 'Segoe UI', sans-serif;
-          color: #333;
+          margin: 0; padding: 2rem;
+          background: #f9f8f6;
+          font-family: 'Roboto', sans-serif;
+          color: #444;
+          display: flex;
+          justify-content: center;
         }
+
         .container {
           max-width: 600px;
-          margin: 30px auto;
-          background-color: #fff;
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
-        .header {
-          background-color: #4f46e5;
-          padding: 20px;
+          background: #fff;
+          padding: 2rem 3rem;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.07);
           text-align: center;
-          color: white;
         }
-        .header h1 {
-          margin: 0;
-          font-size: 24px;
+
+        h2 {
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+          color: #2a2a2a;
+          margin-bottom: 1.5rem;
+          font-size: 2.25rem;
         }
-        .content {
-          padding: 30px;
-        }
-        .content h2 {
-          color: #4f46e5;
-          font-size: 20px;
-          margin-bottom: 15px;
-        }
-        .content p {
+
+        blockquote {
+          position: relative;
+          font-style: italic;
+          font-size: 1.5rem;
           line-height: 1.6;
-          font-size: 16px;
+          color: #555;
+          margin: 0 auto 2rem;
+          max-width: 480px;
         }
-        .button {
-          display: inline-block;
-          margin-top: 20px;
-          padding: 12px 20px;
-          background-color: #4f46e5;
-          color: white;
-          text-decoration: none;
-          border-radius: 6px;
-          font-weight: bold;
+
+        blockquote p {
+          margin: 0;
+          padding-left: 1.5rem;
+          border-left: 4px solid #a9cbb7;
         }
-        .footer {
-          padding: 20px;
-          text-align: center;
-          font-size: 12px;
-          color: #888;
-          background-color: #f4f4f7;
+
+        blockquote footer {
+          margin-top: 1rem;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.1rem;
+          color: #8a8a8a;
+          font-weight: 600;
         }
-        .footer a {
-          color: #4f46e5;
-          text-decoration: none;
+
+        /* subtle leaf icon before footer */
+        blockquote footer::before {
+          content: "🍃";
+          margin-right: 0.5rem;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <h1>🌟 Foxer Weekly Digest</h1>
-    </div>
-    <div class="content">
-        <h2>Hello, {{name}} 👋</h2>
-        <p>We’re excited to bring you the latest updates, insights, and tips straight from the dev world.</p>
-        <p>In this week’s edition:</p>
-        <ul>
-            <li>🔥 5 Spring Boot Tips You Shouldn’t Miss</li>
-            <li>💡 Top 3 Libraries for Email Templates in Java</li>
-            <li>🛡️ API Security Best Practices</li>
-        </ul>
-        <p>Click below to explore the full article and dive deeper into backend development awesomeness.</p>
-        <a href="{{link}}" class="button">Read More</a>
-    </div>
-    <div class="footer">
-        Sent by <a href="#">Foxer Dev Team</a><br />
-        You’re receiving this email because you subscribed to our newsletter.<br />
-        <a href="#">Unsubscribe</a>
-    </div>
+    <h2>Hello, {{name}}!</h2>
+    <blockquote>
+        <p>"{{quote}}"</p>
+        <footer>{{author}}</footer>
+    </blockquote>
 </div>
 </body>
 </html>
