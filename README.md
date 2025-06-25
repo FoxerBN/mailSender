@@ -1,6 +1,4 @@
-Here’s a clean and professional `README.md` you can use for your Java Spring Boot email sender project:
 
----
 
 ```md
 # 📧 Email Sender with Daily Quotes
