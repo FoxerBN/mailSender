@@ -1,21 +1,18 @@
+# 📧 EmailSender – Java Spring Boot Email Service with Daily Quotes
 
-
-```md
-# 📧 Email Sender with Daily Quotes
-
-This is a Spring Boot application that sends beautifully styled HTML emails with inspirational quotes fetched from an external API (zenquotes.io). You can send emails manually or on a **daily schedule** (7:00 and 19:00) using **SendGrid**.
+EmailSender is a Spring Boot application that sends beautifully styled HTML emails with inspirational quotes fetched from [zenquotes.io](https://zenquotes.io/). It automates daily email delivery using SendGrid and also supports manual email sending.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Send emails with dynamic HTML templates (personalized greeting + quote)
-- 📩 Uses **SendGrid API** for reliable delivery
-- 🧘 Fetches quotes from [zenquotes.io](https://zenquotes.io/)
-- 📅 Scheduled sending via Spring Scheduler (cron)
-- 🔥 CORS configured for API access from frontend
-- 🌿 Includes example HTML email template (`emailTemplate.html`)
-- 👨‍💻 Fully written in Java with Spring Boot
+- Send emails with dynamic HTML templates (personalized greeting and quote)
+- Uses **SendGrid API** for reliable email delivery
+- Fetches quotes from [zenquotes.io](https://zenquotes.io/)
+- Scheduled sending via Spring Scheduler (default: 7:00 and 19:00)
+- Customizable HTML email template (`emailTemplate.html`)
+- REST API for manual triggering
+- Fully written in Java 17+ using Spring Boot
 
 ---
 
@@ -24,64 +21,62 @@ This is a Spring Boot application that sends beautifully styled HTML emails with
 - Java 17+
 - Spring Boot
 - SendGrid API
-- RestTemplate
+- RestTemplate (for API calls)
 - Lombok
 - ZenQuotes API
-- HTML & CSS (email template)
+- HTML & CSS (for email template)
 
 ---
 
 ## 📧 How It Works
 
-### 🔹 Scheduled Email
-Every day at 7:00 AM and 7:00 PM, the app sends a personalized email with a motivational quote using this HTML template.
+### Scheduled Email
 
-### 🔹 Manual Email Send
-Call the `EmailService.sendEmail()` or `sendQuoteToEmail()` methods to trigger emails manually from anywhere in your app.
+- Every day at 7:00 AM and 7:00 PM, the app sends a personalized email with a motivational quote using the HTML template.
 
----
+### Manual Email Send
 
-## 🧪 Frontend Template (Optional)
-
-This project also includes a custom HTML UI to test your API endpoints easily.  
-Check `index.html` in the root folder for a **frontend API tester** with support for:
-
-- Login/logout
-- Get, create, update, delete students/users
-- Displays responses in a styled UI
+- Call `EmailService.sendEmail()` or `sendQuoteToEmail()` in your Java code, or use the REST endpoint `/api/email/send` to trigger emails manually.
 
 ---
 
 ## 🧰 Setup
 
 1. **Set your SendGrid API key** in `application.properties`:
-   ```properties
-   sendgrid.api.key=YOUR_SENDGRID_API_KEY
-````
+    ```properties
+    sendgrid.api.key=YOUR_SENDGRID_API_KEY
+    ```
 
 2. (Optional) Modify scheduled recipient:
-
-   ```java
-   emailService.sendQuoteToEmail("your@email.com", "YourName");
-   ```
+    ```java
+    emailService.sendQuoteToEmail("your@email.com", "YourName");
+    ```
 
 3. Run the application:
-
-   ```bash
-   ./mvnw spring-boot:run
-   ```
+    ```bash
+    ./mvnw spring-boot:run
+    ```
 
 ---
 
 ## 💡 Customization
 
-* ✏️ Edit the template in `src/main/resources/templates/emailTemplate.html`
-* 🌐 Use a frontend to hit your Spring API and control email sends externally
+- Edit the template in `src/main/resources/templates/emailTemplate.html`
+- Use a frontend or tools like Postman to hit your Spring API and control email sends externally
 
 ---
 
-### 🙌 Author
+## 📂 Project Structure
 
-Built by [@foxerdxd](mailto:foxerdxd@gmail.com)
+- `src/main/java/sk/foxer/emailSender/EmailSenderApplication.java`: Main entry point
+- `controller/EmailController.java`: REST API for sending emails
+- `service/impl/EmailServiceImpl.java`: Core email sending logic (integrates with SendGrid)
+- `service/impl/QuoteServiceImpl.java`: Fetches random quotes from zenquotes.io
+- `util/TemplateProcessor.java`: Processes HTML templates with variables
+- `src/main/resources/templates/emailTemplate.html`: Editable HTML email template
 
-```
+---
+
+## 🙌 Author
+
+Built by [@FoxerBN](mailto:foxerdxd@gmail.com)
